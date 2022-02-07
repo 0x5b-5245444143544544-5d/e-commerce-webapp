@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title">
+  e-commerce website
+</h1>
+<h2 class="subtitle">
+  Please log in to continue.<br/><br/>
+  <a class="button" href="{{ url_for('auth.login') }}">Login</a>
+</h2>
+{% endblock %}
