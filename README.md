@@ -8,4 +8,5 @@ A flask-based e-commerce web application
 pip install -r requirements.txt
 ```
 inside the `backend` folder.
+
 3. Set the shell environment variable `FLASK_APP` as `backend` and then run `flask run` and the site should be served at `http://localhost:5000`
