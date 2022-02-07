@@ -7,6 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>e-commerce Site</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
+    <style>
+        table {width: 100%;}
+        table, tr, td, th {border: 1px none; border-collapse: collapse; text-align: center;}
+        th, td {padding: 15px}
+    </style>
 </head>
 
 <body>
@@ -20,8 +25,11 @@
                             <a href="{{ url_for('main.index') }}" class="navbar-item">
                                 Home
                             </a>
-                            <a href="{{ url_for('main.profile') }}" class="navbar-item">
-                                Profile
+                            <a href="{{ url_for('main.items_page') }}" class="navbar-item">
+                                Items
+                            </a>
+                            <a href="{{ url_for('main.cart_view') }}" class="navbar-item">
+                                My Cart
                             </a>
                             <a href="{{ url_for('main.admin_page') }}" class="navbar-item">
                                 Administration

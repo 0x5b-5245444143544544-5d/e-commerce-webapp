@@ -1,6 +1,21 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-
+<table align="center">
+    <tr>
+        <th> ID </th>
+        <th> Item Name </th>
+        <th> Quantity </th>
+    </tr>
+    {% for i in range(0, len) %}
+    <tr>
+        <td>{{items[i]['id']}}</td>
+        <td>{{items[i]['item_name']}}</td>
+        <td>{{items[i]['order_quantity']}}</td>
+    </tr>
+    {% endfor %}
+</table>
+<br/>
+<a class="button" href="{{ previous_page_link }}">Previous Page</a>&nbsp;
+<a class="button" href="{{ next_page_link }}">Next Page</a>
 {% endblock %}

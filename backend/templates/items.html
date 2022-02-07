@@ -1,17 +1,24 @@
 {% extends "base.html" %}
 
 {% block content %}
+{% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div class="notification is-success">
+            {{ messages[0] }}
+        </div>
+        {% endif %}
+        {% endwith %}
 <table align="center">
     <tr>
         <th> ID </th>
         <th> Item Name </th>
-        <th> Quantity</th>
+        <th>Place order</th>
     </tr>
     {% for i in range(0, len) %}
     <tr>
         <td>{{items[i]['id']}}</td>
         <td>{{items[i]['item_name']}}</td>
-        <td>{{items[i]['order_quantity']}}</td>
+        <td><form action="/add_cart", method="post"><button class="button" type="submit" name="order_button" value="{{ items[i]['id'] }}">Place Order</button></form></td>
     </tr>
     {% endfor %}
 </table>
