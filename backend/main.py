@@ -71,7 +71,8 @@ def cart():
         db['cart'].insert(dict(
             user_id=current_user.id,
             item_id=order_item_id,
-            order_quantity=1
+            order_quantity=1,
+            is_delivered=False
         ))
     else:
         user_cart_item['order_quantity']+=1
@@ -123,7 +124,7 @@ def items_page():
 @login_required
 def cart_view():
     # get all items from DB
-    cart_items = [item for item in db['cart'].find(user_id=current_user.id)]
+    cart_items = [item for item in db['cart'].find(user_id=current_user.id, is_delivered=False)]
     if not cart_items:
         return redirect(url_for('main.items_page'))
     
@@ -132,7 +133,7 @@ def cart_view():
         items.append(dict(
             id = item['item_id'],
             item_name = db['items'].find_one(id=item['item_id'])['item_name'],
-            order_quantity = item['order_quantity']
+            order_quantity = item['order_quantity'],
         ))
         
     total_items = len(items)
@@ -158,3 +159,19 @@ def cart_view():
         items=current_page_items, 
         previous_page_link=url_for("main.cart_view")+f"?page_no={page_no-1 if page_no > 1 else 1}", 
         next_page_link=url_for("main.cart_view")+f"?page_no={page_no+1 if page_no < pages else pages}")
+
+@main.route('/notifications')
+@login_required
+def notifications():
+    # get information about all delievered items from DB
+    delivered_items = db['cart'].find(user_id=current_user.id, is_delivered=True)
+    if not delivered_items:
+        return jsonify([])
+    else:
+        items = []
+        for item in delivered_items:
+            items.append(dict(
+                item_id = item['item_id'],
+                item_name = db['items'].find_one(id=item['item_id'])['item_name'] 
+            ))
+        return jsonify(items)

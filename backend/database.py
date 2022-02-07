@@ -43,6 +43,7 @@ class Database:
             cart.create_column("item_id", db.types.integer)
             cart.create_column("user_id", db.types.integer)
             cart.create_column("order_quantity", db.types.integer)
+            cart.create_column("is_delivered", db.types.boolean)
 
         if "orders" not in db:
             orders = db.create_table("orders")
