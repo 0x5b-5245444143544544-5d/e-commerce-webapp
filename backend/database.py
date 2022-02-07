@@ -42,6 +42,7 @@ class Database:
             cart = db.create_table("cart")
             cart.create_column("item_id", db.types.integer)
             cart.create_column("user_id", db.types.integer)
+            cart.create_column("order_quantity", db.types.integer)
 
         if "orders" not in db:
             orders = db.create_table("orders")
