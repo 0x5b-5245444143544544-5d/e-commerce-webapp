@@ -1,0 +1,6 @@
+dataset==1.5.2
+mysqlclient==2.1.0
+Flask==2.0.2
+pyaml-env==1.1.4
+sqlalchemy-utils==0.38.2
+flask-login==0.5.0
