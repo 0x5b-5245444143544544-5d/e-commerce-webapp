@@ -1,0 +1,9 @@
+database:
+  database: !ENV ${MYSQL_DATABASE}
+  host: !ENV ${MYSQL_HOST}
+  user: !ENV ${MYSQL_USER}
+  password: !ENV ${MYSQL_PASSWORD}
+
+backend:
+  flask_secret: !ENV ${FLASK_SECRET}
+  password_salt: !ENV ${PASSWORD_SALT}
